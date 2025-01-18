@@ -10,7 +10,7 @@ class DoublyLinkedList:
         
     def forward_traverse(self):
         if self.head == None:
-            print("List is empty")
+            print("List is empty.")
         else:
             temp = self.head
             while(temp != None):
@@ -20,7 +20,7 @@ class DoublyLinkedList:
     
     def backward_traverse(self):
         if self.head == None:
-            print("List is empty")
+            print("List is empty.")
         else:
             temp = self.head
             while(temp.next != None):
