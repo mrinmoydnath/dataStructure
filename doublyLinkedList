@@ -71,7 +71,7 @@ class DoublyLinkedList:
                 temp.next.prev = newNode
                 temp.next = newNode
     
-    def delete(self, index):
+    def delete_at_index(self, index):
         if self.head == None:
             print("List is empty, nothing to delete.")
         else:
@@ -96,6 +96,5 @@ if __name__ == "__main__":
     x.insert_at_end(40)
     x.insert_at_index(50, 2)
     x.forward_traverse()
-    x.delete(2)
-    x.forward_traverse()
+    x.delete_at_index(2)
     x.backward_traverse()
