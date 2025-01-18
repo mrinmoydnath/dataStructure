@@ -1,0 +1,83 @@
+class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def traverse(self):
+        if self.head is None:
+            print("List is empty.")
+        else:
+            temp = self.head
+            while temp is not None:
+                print(f"{temp.data} -> ", end="")
+                temp = temp.next
+            print("Null")
+
+    def insert_at_beginning(self, data):
+        newNode = Node(data)
+        newNode.next = self.head
+        self.head = newNode
+
+    def insert_at_end(self, data):
+        newNode = Node(data)
+        if self.head is None:
+            self.head = newNode
+        else:
+            temp = self.head
+            while temp.next is not None:
+                temp = temp.next
+            temp.next = newNode
+
+    def insert_at_index(self, data, index):
+        if index == 0:
+            self.insert_at_beginning(data)
+        else:
+            newNode = Node(data)
+            temp = self.head
+            current_index = 0
+            while (temp != None and current_index < index-1):
+                temp = temp.next
+                current_index += 1
+            if temp is None:
+                print(f"Index {index} is out of range, inserting at the end.")
+                self.insert_at_end(data)
+            else:
+                newNode.next = temp.next
+                temp.next = newNode
+
+    def delete_at_index(self, index):
+        if (self.head == None):
+            print("List is empty, nothing to delete.")
+            return
+
+        if (index == 0):
+            self.head = self.head.next
+            return
+
+        temp = self.head
+        current_index = 0
+        while (temp != None and current_index < index-1):
+            temp = temp.next
+            current_index += 1
+
+        if (temp == None or temp.next == None):
+            print(f"Index {index} is out of range, deletion not possible.")
+        else:
+            temp.next = temp.next.next
+
+if __name__ == "__main__":
+    x = LinkedList()
+    x.insert_at_beginning(10)
+    x.insert_at_beginning(20)
+    x.insert_at_beginning(30)
+    x.insert_at_end(40)
+    x.insert_at_index(50, 2)
+    print("List after insertions:")
+    x.traverse()
+    x.delete_at_index(2)
+    print("\nList after deletion at index 2:")
+    x.traverse()
