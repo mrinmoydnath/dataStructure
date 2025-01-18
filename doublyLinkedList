@@ -49,7 +49,6 @@ class DoublyLinkedList:
                 temp = temp.next
             temp.next = newNode
             newNode.prev = temp
-            newNode.next = None
     
     def insert_at_index(self, data, index):
         newNode = Node(data)
