@@ -1,0 +1,66 @@
+class Node:
+    def __init__(self, data, next = None):
+        self.data = data
+        self.next = next
+
+class Stack:
+    def __init__(self, max_size = 10):
+        self.head = None
+        self.max_size = max_size
+        self.size = 0
+        
+    def isFull(self):
+        return self.size >= self.max_size
+    
+    def isEmpty(self):
+        return self.head is None
+    
+    def top(self):
+        if self.isEmpty():
+            print("Stack is empty.")
+        else:
+            print(f"Top element: {self.head.data}")
+    
+    def push(self, data):
+        newNode = Node(data)
+        if self.isEmpty():
+            self.head = newNode
+            self.size += 1
+        elif self.isFull():
+            print("Stack is full, push not possible.")
+        else:
+            newNode.next = self.head
+            self.head = newNode
+            self.size += 1
+        
+    def pop(self):
+        if self.isEmpty():
+            print("Stack is empty, nothing to pop.")
+        else:
+            self.head = self.head.next
+            self.size -= 1
+        
+    def display(self):
+        if self.isEmpty():
+            print("Stack is empty.")
+        else:
+            temp = self.head
+            while (temp != None):
+                print(f"{temp.data} -> ", end="")
+                temp = temp.next
+            print("Null")
+
+if __name__ == "__main__":
+    x = Stack(5)
+    print(x.isEmpty())
+    x.push(10)
+    x.push(20)
+    x.push(30)
+    x.push(40)
+    x.push(50)
+    x.display()
+    x.push(70)
+    x.pop()
+    x.top()
+    print(x.isFull())
+    x.display()
