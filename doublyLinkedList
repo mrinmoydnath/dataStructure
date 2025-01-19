@@ -83,7 +83,7 @@ class DoublyLinkedList:
             if temp == None:
                 print(f"Index {index} is out of range, deletion not possible.")
             elif temp.next == None:
-                temp.prev == None
+                temp.prev = None
             else:
                 temp.prev.next = temp.next
                 temp.next.prev = temp.prev
